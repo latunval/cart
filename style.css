@@ -123,7 +123,7 @@ body {
     justify-content: center;
 }
 
-.block {
+.block, .color {
     display: none;
 }
 
@@ -357,4 +357,20 @@ body {
     width: 30px;
     justify-content: center;
     align-items: center;
+}
+
+@media screen and (max-width:768px) {
+    .row {
+        flex-direction: column;
+        width: 95%;
+        margin: 5px auto;
+        border: 2px solid red;
+    }
+     .cart {
+        width: 100%;
+    }
+    .add {
+        border: 2px solid red;
+        /* margin: 10px auto; */
+    }
 }

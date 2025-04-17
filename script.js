@@ -82,7 +82,7 @@ async function carts() {
                   quantityEl.textContent = `${check.quantity}X`;
                   priceEl.innerHTML = `<span class="quantity">${
                     check.quantity
-                  }X</span> $${check.price.toFixed(2)} <span>$${(
+                  }X</span> $${check.price.toFixed(2)}<span>$${(
                     check.quantity * check.price
                   ).toFixed(2)}</span>`;
                 }
@@ -104,6 +104,8 @@ async function carts() {
               <button class="orderBtn">Confirm Order</button></div>
             `;
           }
+        }else {
+          location.reload()
         }
       });
 
@@ -125,7 +127,7 @@ async function carts() {
                 quantityEl.textContent = `${check.quantity}X`;
                 priceEl.innerHTML = `<span class="quantity">${
                   check.quantity
-                }X</span> $${check.price.toFixed(2)} <span>$${(
+                }X</span> $${check.price.toFixed(2)} <span>=$${(
                   check.quantity * check.price
                 ).toFixed(2)}</span>`;
               }
@@ -165,6 +167,7 @@ async function carts() {
             category: element.category,
             price: element.price,
             quantity: 1,
+            image : element.image
           };
           cart.push(cartItems);
           // console.log(cart);
@@ -189,7 +192,8 @@ async function carts() {
         <section class="carbon"><img src="/assets/images/icon-carbon-neutral.svg" alt=""> <span>This is a <b>carbon-neutral</b> delivery</span></section>
         <button class="orderBtn">Confirm Order</button></div>`;
           cartView.appendChild(carbon);
-        }
+        };
+
         const orderBtn = document.querySelector(".orderBtn");
         orderBtn.addEventListener("click", function () {
           showModal();
@@ -205,6 +209,7 @@ async function carts() {
 carts();
 
 const showModal = function () {
+  // alert('hello')
   const confirmModal = document.createElement("div");
   confirmModal.classList.add("confirmModal");
   confirmModal.innerHTML = `
@@ -233,13 +238,54 @@ const showModal = function () {
 };
 
 
-function showOrderConfirmedModal() {
-  
-  for (let i = 0; 1 < dataArray.length; i++) {
-    const element = dataArray[i];
-    let name = element.name;
-    let price = element.price;
-  }
+const showOrderConfirmedModal = function () {
+  const orderModal = document.createElement('div');
+  orderModal.classList.add('orderConfirmedModal');
+  orderModal.innerHTML = `
+      <div class="order-confirmed">
+          <img src="/assets/images/icon-order-confirmed.svg" alt="Order Confirmed" class="confirm-icon">
+          <h2>Order Confirmed</h2>
+          <p class="subtitle">We hope you enjoy your food!</p>
+          <div class="order-items">
+              ${cart.map(item => {
+                      const data = cart.find(d => d.name === item.name);
+                      console.log(item);
+                      
+                      return `
+                          <div class="order-item">
+                              <img src="${data.image.desktop}" alt="${item.name}" class="item-img">
+                              <div class="item-details">
+                                  <h4>${item.name}</h4>
+                                  <p><span class="quantity">${item.quantity}x</span> @ $${item.price.toFixed(2)} = $${(item.quantity * item.price).toFixed(2)}</p>
+                              </div>
+                          </div>
+                      `;
+                  })
+                  .join('')}
+          </div>
+          <div class="order-total">
+              <p>Order Total</p>
+              <h3>$${cart.reduce((sum, item) => sum + item.quantity * item.price, 0).toFixed(2)}</h3>
+          </div>
+          <button class="start-new-order">Start New Order</button>
+      </div>
+  `;
+  document.querySelector('body').appendChild(orderModal);
 
-}
+  // Add event listener for the "Start New Order" button
+  const startNewOrderBtn = orderModal.querySelector('.start-new-order');
+  startNewOrderBtn.addEventListener('click', () => {
+      cart = [];
+      // Reset all product cards
+      document.querySelectorAll('.card').forEach(card => {
+          card.querySelector('.hoverbtn').classList.add('hidden');
+          card.querySelector('.addbtn').classList.remove('hidden');
+          card.querySelector('.product-img').classList.remove('border');
+          card.querySelector('.quantity').textContent = '1';
+      });
 
+      
+       location.reload()
+orderModal.remove();
+  });
+};
