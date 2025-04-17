@@ -1,0 +1,360 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Red Hat Text';
+    background-color: hsl(20, 50%, 98%);
+}
+.carbon {
+    background-color: hsl(24, 88%, 61%);
+    width: 95%;
+    margin: 10px auto;
+    border-radius: 8px;
+    text-align: center;
+    padding: 8px;
+}
+.carbon span  {
+    font-size: 0.9rem;
+}
+#row1{
+    display: flex;
+    flex-direction: row;
+    width: 70%;
+    justify-content: center;
+    flex-wrap: wrap;
+    /* border: 2px solid blue; */
+   /* position: relative; */
+}
+.row {
+    display:  flex;
+    flex-direction: row;
+}
+.cart {
+    background-color: #fff;
+    /* position: fixed; */
+    width: 30%;
+    padding: 10px;
+    /* justify-items: center; */
+    
+    
+}
+.add {
+    display: block;
+    position: relative;
+    /* flex-direction: row; */
+    width: 250px;
+    border-radius: 10px;
+    /* box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.3); */
+    /* border: 2px solid red; */
+    gap: 20px;
+    margin: 10px;
+}
+/* .add > img:hover {
+    border: 2px solid red;
+
+} */
+.add > img {
+    width: 100%;
+    border-radius: 10px;
+    position: relative;
+    z-index: -1;
+}
+.addbtn, .adding {
+    /* transform: translate(40px, -10px); */
+    cursor: pointer;
+    /* position: relative; */
+    padding: 10px 40px;
+    border-radius: 20px;
+    display: inline-block;
+    margin: -15px 0 0 35px;
+    /* left: 60px;
+    top: -15px; */
+}
+.adding {
+    background-color: hsl(14, 86%, 42%);
+    display: flex;
+    flex-direction: row;
+    justify-items: space-between;
+    cursor: pointer;
+    position: relative;
+    /* padding: 10px 40px;
+    border-radius: 20px;
+    display: inline-block;
+    */
+    /* position: absolute; */
+    top: -33px; 
+    margin: -15px auto 0 
+    /* display: block; */
+}
+.category {
+    color:  hsl(14, 25%, 72%);
+    /* padding: 5px; */
+}
+.name {
+    color:  hsl(14, 65%, 9%);
+    font-size: 1rem;
+    font-weight: 700;
+    padding:5px;
+}
+.price {
+    color: hsl(14, 86%, 42%);
+    font-weight: 600;
+    padding:5px;
+}
+.orderBtn{
+    background-color: hsl(14, 86%, 42%);
+    width: 95%;
+    margin: 10px auto;
+    padding: 15px;
+    color: #fff;
+    border-radius: 10px;
+    border: 0;
+    cursor: pointer;
+}
+.orderBtn:hover {
+    opacity: 0.8;
+}
+.join {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.block {
+    display: none;
+}
+
+.minus, .plus {
+    border-radius: 50%;
+    border: 2px solid #ccc;
+    padding: 8px 5px;
+}
+.plus {
+    padding: 5px 3px;
+}
+.number{
+    margin: 0 20px;
+}
+.border {
+    border: 2px solid red;
+}
+.total {
+    display: flex;
+    justify-content: space-between;
+    /* border: 2px solid red; */
+}
+.total h4 {
+    font-size: 1.5rem;
+}
+
+.header{
+    color: #fff;
+    background-color:  hsl(14, 86%, 42%);
+    padding: 25px;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+}
+.question{
+    text-align: center;
+    margin-top: 40px;
+}
+.btns{
+   display: flex; 
+   justify-content: space-between;
+   margin-top: 20px;
+   padding: 20px 30px;
+   border-top: 1px solid #b4b4b4;
+  
+}
+.btns button{
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+     color: #fff;
+     cursor: pointer;
+}
+.btns button:first-child{
+    background-color: #363636;
+}
+.btns button:last-child{
+    background-color:  hsl(14, 87%, 36%);
+}
+
+
+.orderConfirmedModal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.order-confirmed {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    max-width: 500px;
+    width: 90%;
+    max-height: 80vh;
+    overflow-y: auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.confirm-icon {
+    width: 40px;
+    margin-bottom: 10px;
+}
+
+.order-confirmed h2 {
+    margin: 10px 0;
+    font-size: 24px;
+}
+
+.subtitle {
+    color: #555;
+    margin-bottom: 20px;
+}
+
+.order-items {
+    border: 1px solid #eee;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+.order-item {
+    display: flex;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.order-item:last-child {
+    border-bottom: none;
+}
+
+.item-img {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    margin-right: 15px;
+    border-radius: 4px;
+}
+
+.item-details h4 {
+    margin: 0;
+    font-size: 16px;
+}
+
+.item-details p {
+    margin: 5px 0 0;
+    color: #555;
+}
+
+.item-details .quantity {
+    color: #e74c3c;
+    font-weight: bold;
+}
+
+.order-total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    font-size: 18px;
+}
+
+.order-total p {
+    margin: 0;
+}
+
+.order-total h3 {
+    margin: 0;
+    font-size: 20px;
+}
+
+.start-new-order {
+    width: 100%;
+    padding: 12px;
+    background: #e74c3c;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.start-new-order:hover {
+    background: #c0392b;
+}
+
+/* Adjust confirmModal for consistency */
+.confirmModal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.confirm-order {
+    background: white;
+    /* padding: 20px; */
+    border-radius: 8px;
+    max-width: 400px;
+    width: 90%;
+    text-align: center;
+}
+
+.confirm-order .header {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.confirm-order .question {
+    color: #555;
+    margin-bottom: 20px;
+}
+
+.confirm-order .btns {
+    display: flex;
+    justify-content: space-between;
+}
+
+.confirm-order button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.confirm-order .cancel {
+    background: #ccc;
+}
+
+.confirm-order .confirm {
+    background: #e74c3c;
+    color: white;
+}
+.decre, .incre{
+    border: 1px solid #fff;
+    /* padding: 8px; */
+    border-radius: 15px;
+    display: flex;
+    height: 30px;
+    width: 30px;
+    justify-content: center;
+    align-items: center;
+}
