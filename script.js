@@ -60,6 +60,8 @@ async function carts() {
             // Update the cart count
             const cartAdd = document.getElementById("count");
             cartAdd.innerHTML = cart.length;
+            const cartAdds = document.getElementById(".counts");
+            cartAdds.innerHTML = cart.length;
       
             // If the cart is empty, display the empty cart message
             if (cart.length === 0) {
@@ -173,6 +175,8 @@ async function carts() {
           // console.log(cart);
           let cartAdd = document.getElementById("count");
           cartAdd.innerHTML = cart.length;
+          let cartAdds = document.getElementById("counts");
+          cartAdds.innerHTML = cart.length;
           const calculateQuantity = cartItems.quantity * cartItems.quantity;
           const cartView = document.querySelector(".cart");
           const cartList = document.createElement("div");
@@ -289,3 +293,10 @@ const showOrderConfirmedModal = function () {
 orderModal.remove();
   });
 };
+
+const icon = document.getElementById('icon');
+icon.addEventListener('click',function () {
+  // alert('hello')
+  icon.style.display = 'none'
+  document.querySelector('.cart').style.display = 'block'
+})
